@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900');
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --main-bg-color: #fefefe;
+    --main-text-color: #13151b;
+    --main-secondary-text: #13151b;
+    --preview-holder-bg: #f3f2f9;
+    --preview-result-bg: #d7a1ff;
+    --text-area-text-color: #d4d4de;
+    --text-area-bg-color: #f3f2f9;
+}
+
+html[data-theme='dark'] {
+    --main-bg-color: #13131b;
+    --main-text-color: #fefefe;
+    --main-secondary-text: #9199a0;
+    --text-area-bg-color: #22222c;
+    --preview-holder-bg: #23232d;
+
+}
+
+html,
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--main-bg-color);
+    color: var(--main-text-color);
+}
+
+/* typography */
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.25rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+span,
+p {
+    color: var(--main-secondary-text);
+}
+
+/* layout */
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+body {
+    padding: 1em;
+}
+
+/* header */
+header {
+    display: flex;
+    align-items: center;
+}
+
+div.logo {
+    display: flex;
+    align-items: center;
+}
+
+span.logo-circle {
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(to right, var(--main-bg-color) 50%, var(--preview-result-bg) 50%);
+    margin-right: 1em;
+}
+
+span.logo-rect {
+    width: 30px;
+    height: 60px;
+    background: var(--preview-result-bg);
+    margin-right: -1.25em;
+}
+
+.dark-light-toggle {
+    margin-left: auto;
+    background: var(--text-area-bg-color);
+    padding: 0.6em 0.8em;
+    border-radius: 0.5em;
+}
+
+/* main */
+textarea {
+    background: var(--text-area-bg-color);
+    resize: none;
+    width: 100%;
+    height: 150px;
+    border-radius: 0.5em;
+    border: none;
+    box-shadow: 0 0 2px var(--main-secondary-text);
+    color: var(--main-secondary-text);
+    padding: 0.5em;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+/* options */
+
+.options {
+    display: flex;
+    align-items: center;
+    color: var(--main-secondary-text);
+    gap: 1em;
+}
+
+input[type='checkbox'] {
+    appearance: none;
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    margin: 0;
+    margin-right: 0.25em;
+    box-shadow: 0 0 2px var(--main-secondary-text);
+    accent-color: var(--main-bg-color);
+    background-color: var(--main-bg-color);
+    position: relative;
+    font-family: inherit;
+}
+
+.reading-time {
+    margin-left: auto;
+}
+
+input[type="checkbox"]::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    line-height: 1em;
+    content: "";
+    color: var(--main-secondary-text);
+}
+
+input[type="checkbox"]:checked::before {
+    content: "\2713";
+}
+
+/* results */
+.result {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1em;
+}
+
+.card {
+    border-radius: 0.5em;
+    padding: 0.5em;
+    box-shadow: 0 0 2px var(--main-secondary-text);
+}
+
+.card span,
+.card p {
+    color: #13131b;
+}
+
+.card span {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.card p {
+    font-weight: 500;
+}
+
+.perple {
+    background: #d3a1fa;
+}
+
+.golden {
+    background: #ff9f00;
+}
+
+.orange {
+    background: #ff8159;
+}
+
+/* letters count results */
+/* .letters-density {
+    display: grid;
+} */
+
+.letter-holder {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.preview {
+    height: 10px;
+    width: 100%;
+    background-color: var(--preview-holder-bg);
+    border-radius: 0.5em;
+    position: relative;
+}
+
+.preview::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 70%;
+    border-radius: 0.5em;
+    background: var(--preview-result-bg);
+}
+
+/* media quries */
+@media (max-width: 610px) {
+    .options {
+        flex-direction: column;
+        align-items: start;
+        gap: 0;
+    }
+
+    .options div {
+        margin-top: 1em;
+    }
+
+    .reading-time {
+        margin-left: 0;
+        ;
+    }
+}
+
+@media (max-width: 385px) {
+    h1 {
+        font-size: 2rem;
+    }
+}
