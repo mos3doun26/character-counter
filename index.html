@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Counter</title>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-rect"></span>
+                <span class="logo-circle"></span>
+            </div>
+            <h2>Character Counter</h2>
+            <div class="dark-light-toggle">
+                <i class="fa-solid fa-sun"></i>
+                <!-- <i class="fa-solid fa-moon"></i> -->
+            </div>
+        </header>
+
+        <main>
+            <h1>Analyze Your Text<br>in real-time.</h1>
+            <textarea></textarea>
+            <div class="options">
+                <div>
+                    <input type="checkbox" id="exclude-spaces" name="exclude-spaces">
+                    <label for="exclude-spaces">Exclude Spaces</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="character-limit" name="character-limit">
+                    <label for="character-limit">Set Character Limit</label>
+                </div>
+                <p class="reading-time">Approx.Reading time: <span>0</span>minute</p>
+            </div>
+            <div class="result">
+                <div class="card perple">
+                    <span class="character-count">0</span>
+                    <p>Total Characters</p>
+                </div>
+                <div class="card golden">
+                    <span class="word-count">700</span>
+                    <p>Word Count</p>
+                </div>
+                <div class="card orange">
+                    <span class="sentence-count">0</span>
+                    <p>Sentence Count</p>
+                </div>
+            </div>
+
+            <h3>Letter Density</h3>
+
+            <div class="letters-density">
+                <!-- <div class="letter-holder">
+                    <span class="letter">E</span>
+                    <span class="preview"></span>
+                    <span class="percentage">55%</span>
+                </div> -->
+                <p>No characters found, Start typing to see letter density.</p>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
