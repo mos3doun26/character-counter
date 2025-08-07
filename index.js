@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', renderTheme)
 document.addEventListener('click', (e) => {
     if (e.target.id === 'dark-light-toggle' || e.target.id === 'theme-icon') {
         switchTheme()
+    } else if (e.target.id === 'more-btn' || e.target.id === 'more-btn-icon') {
+        showMoreResults()
     }
 })
 
@@ -85,23 +87,48 @@ function getArrOfcharactersObjs(text) {
 
 // get the html of the letters density div
 function getLetterDesityHtml(characters) {
-    return characters.map(char => {
+    return characters.map((char, index) => {
+        // hanel the user issue when the see more button is clicked,
+        // should render the letter density without giving it hidden class.
+        const hide = index > 4 && document.getElementById('more-btn').textContent === 'See more'
         const charPercentage = (char.count / userInput.value.length) * 100
-        return `<div class="letter-holder">
+        return `<div class="letter-holder ${hide ? 'hidden' : ''}">
                     <span class="letter">${char.character}</span>
                     <div class="preview">
                         <span class="preview-result" style='width: ${charPercentage}%'></span>
                     </div>
                     <span class="percentage">${char.count}(${charPercentage.toFixed(2)}%)</span>
                 </div>`
-    }).join('')
+    })
 }
 
 // render html of the Letters density div
-function showLetterDensity(html) {
-    if (html === '') {
-        lettersDesityDiv.innerHTML = '<p>No characters found, Start typing to see letter density.</p>'
+function showLetterDensity(charsHtmlArr) {
+    let html = ''
+    if (charsHtmlArr.length === 0) {
+        document.getElementById('more-btn-holder').classList.add('hidden')
+        html = '<p>No characters found, Start typing to see er density.</p>'
     } else {
-        lettersDesityDiv.innerHTML = html
+        html = charsHtmlArr.join('')
+        if (charsHtmlArr.length > 5) {
+            document.getElementById('more-btn-holder').classList.remove('hidden')
+        } else {
+            document.getElementById('more-btn-holder').classList.add('hidden')
+
+        }
     }
+    lettersDesityDiv.innerHTML = html
+}
+
+// handel clicking on See more button and see less
+// and presenting of reults
+function showMoreResults() {
+    // get the element will hidden class only
+    const lettersHolder = Array.from(document.querySelectorAll('.letter-holder')).slice(5)
+    lettersHolder.forEach(holder => {
+        holder.classList.toggle('hidden')
+    })
+
+    const moreBtn = document.getElementById('more-btn')
+    moreBtn.textContent = moreBtn.textContent === 'See more' ? 'See less' : 'See more'
 }

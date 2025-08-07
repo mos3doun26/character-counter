@@ -196,13 +196,14 @@ input[type="checkbox"]:checked::before {
 /* letters count results */
 .letter-holder {
     display: grid;
-    grid-template-columns: 20px 1fr 110px;
+    grid-template-columns: 40px 1fr 110px;
     align-items: center;
-    gap: 0.5em;
+    margin-bottom: 0.75em;
+    transition: all 0.3s;
 }
 
 .letter {
-    margin-right: 1.5em;
+    padding-right: 1em;
 }
 
 .preview {
@@ -225,6 +226,21 @@ input[type="checkbox"]:checked::before {
 
 .percentage {
     margin-left: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+/* more button */
+.more-btn {
+    font-family: inherit;
+    border: none;
+    margin-top: 1em;
+    padding: 0;
+    background: inherit;
+    font-size: 1.125rem;
+    color: var(--main-text-color);
 }
 
 /* media quries */
