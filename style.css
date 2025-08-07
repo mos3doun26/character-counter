@@ -194,14 +194,15 @@ input[type="checkbox"]:checked::before {
 }
 
 /* letters count results */
-/* .letters-density {
-    display: grid;
-} */
-
 .letter-holder {
-    display: flex;
+    display: grid;
+    grid-template-columns: 20px 1fr 110px;
     align-items: center;
     gap: 0.5em;
+}
+
+.letter {
+    margin-right: 1.5em;
 }
 
 .preview {
@@ -212,15 +213,18 @@ input[type="checkbox"]:checked::before {
     position: relative;
 }
 
-.preview::before {
-    content: '';
+.preview-result {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
-    width: 70%;
+    /* width: 70%; */
     border-radius: 0.5em;
     background: var(--preview-result-bg);
+}
+
+.percentage {
+    margin-left: auto;
 }
 
 /* media quries */

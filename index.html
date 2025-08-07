@@ -19,15 +19,14 @@
                 <span class="logo-circle"></span>
             </div>
             <h2>Character Counter</h2>
-            <div class="dark-light-toggle">
-                <i class="fa-solid fa-sun"></i>
-                <!-- <i class="fa-solid fa-moon"></i> -->
+            <div class="dark-light-toggle" id="dark-light-toggle">
+                <i id="theme-icon" class="fa-solid fa-sun"></i>
             </div>
         </header>
 
         <main>
             <h1>Analyze Your Text<br>in real-time.</h1>
-            <textarea></textarea>
+            <textarea id="user-input"></textarea>
             <div class="options">
                 <div>
                     <input type="checkbox" id="exclude-spaces" name="exclude-spaces">
@@ -41,31 +40,27 @@
             </div>
             <div class="result">
                 <div class="card perple">
-                    <span class="character-count">0</span>
+                    <span class="character-count" id="character-count">00</span>
                     <p>Total Characters</p>
                 </div>
                 <div class="card golden">
-                    <span class="word-count">700</span>
+                    <span class="word-count" id="word-count">00</span>
                     <p>Word Count</p>
                 </div>
                 <div class="card orange">
-                    <span class="sentence-count">0</span>
+                    <span class="sentence-count" id="sentence-count">00</span>
                     <p>Sentence Count</p>
                 </div>
             </div>
 
             <h3>Letter Density</h3>
 
-            <div class="letters-density">
-                <!-- <div class="letter-holder">
-                    <span class="letter">E</span>
-                    <span class="preview"></span>
-                    <span class="percentage">55%</span>
-                </div> -->
+            <div class="letters-density" id="letters-density">
                 <p>No characters found, Start typing to see letter density.</p>
             </div>
         </main>
     </div>
+    <script src="index.js"></script>
 </body>
 
 </html>
