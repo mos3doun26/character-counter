@@ -131,4 +131,5 @@ function showMoreResults() {
 
     const moreBtn = document.getElementById('more-btn')
     moreBtn.textContent = moreBtn.textContent === 'See more' ? 'See less' : 'See more'
+    document.getElementById('more-btn-icon').classList.toggle('up')
 }

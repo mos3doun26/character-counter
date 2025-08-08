@@ -257,10 +257,15 @@ input[type="checkbox"]:checked::before {
     font-family: inherit;
     border: none;
     margin-top: 1em;
+    margin-bottom: 1em;
     padding: 0;
     background: inherit;
     font-size: 1.125rem;
     color: var(--main-text-color);
+}
+
+.up {
+    transform: rotate(180deg);
 }
 
 /* media quries */
