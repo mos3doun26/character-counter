@@ -26,7 +26,10 @@
 
         <main>
             <h1>Analyze Your Text<br>in real-time.</h1>
-            <textarea id="user-input"></textarea>
+            <div>
+                <textarea id="user-input"></textarea>
+                <p class="warnning hidden" id="warnning">you got reached the max length.</p>
+            </div>
             <div class="options">
                 <div>
                     <input type="checkbox" id="exclude-spaces" name="exclude-spaces">

@@ -6,6 +6,9 @@ const wordCount = document.getElementById('word-count')
 const sentenceCount = document.getElementById('sentence-count')
 const userInput = document.getElementById('user-input')
 const lettersDesityDiv = document.getElementById('letters-density')
+const exculedSpace = document.getElementById('exclude-spaces')
+const characterLimit = document.getElementById('character-limit')
+const warnningEl = document.getElementById('warnning')
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', renderTheme)
@@ -19,14 +22,25 @@ document.addEventListener('click', (e) => {
 })
 
 userInput.addEventListener('input', function () {
-    const exculedSpaceOpt = document.getElementById('exclude-spaces')
     setTimeout(() => {
-        renderCharacterCount(userInput.value, exculedSpaceOpt.checked)
+        renderCharacterCount(userInput.value, exculedSpace.checked)
         renderWordCount(userInput.value)
         renderSentencescount(userInput.value)
     }, 200);
     const characters = getArrOfcharactersObjs(userInput.value)
     showLetterDensity(getLetterDesityHtml(characters))
+    settingCharacterLimit()
+})
+
+// exculde the space or include it direct when user change the checkbox status
+exculedSpace.addEventListener('change', () => {
+    renderCharacterCount(userInput.value, exculedSpace.checked)
+})
+
+// set character limit to user input
+characterLimit.addEventListener('change', () => {
+    // set a a maxlength for 1500 to the textarea
+    settingCharacterLimit()
 })
 
 // switch between dark and light theme
@@ -132,4 +146,18 @@ function showMoreResults() {
     const moreBtn = document.getElementById('more-btn')
     moreBtn.textContent = moreBtn.textContent === 'See more' ? 'See less' : 'See more'
     document.getElementById('more-btn-icon').classList.toggle('up')
+}
+
+// check of the character limit checkbox
+function settingCharacterLimit() {
+    if (characterLimit.checked) {
+        userInput.maxLength = 1500
+        warnningEl.classList.add('hidden')
+        if (userInput.value.length >= userInput.maxLength) {
+            warnningEl.classList.remove('hidden')
+        }
+    } else {
+        userInput.removeAttribute('maxlength')
+        warnningEl.classList.add('hidden')
+    }
 }

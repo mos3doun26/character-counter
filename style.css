@@ -119,6 +119,27 @@ textarea {
     font-size: 1rem;
 }
 
+textarea::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--text-area-bg-color);
+    border-radius: 0.5em;
+    cursor: default;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--preview-result-bg);
+    cursor: default;
+    border-radius: 0.5em;
+}
+
+.warnning {
+    color: rgb(236, 110, 110);
+    text-align: right;
+}
+
 /* options */
 
 .options {
