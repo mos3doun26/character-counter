@@ -74,19 +74,24 @@ function renderTheme() {
 // count the total characters
 function renderCharacterCount(text, exculedSpace = false) {
     const count = exculedSpace ? text.replaceAll(' ', '').length : text.length
-    characterCount.textContent = count
+    count === 0 ? characterCount.textContent = "00" : count < 10 ? characterCount.textContent = `0${count}` : characterCount.textContent = count
 }
 
 // count the words
 function renderWordCount(text) {
-    const count = text.split(' ').length
-    wordCount.textContent = count
+    // method 1
+    const words = text.trim().split(/\s+/)
+    text.trim() === '' ? wordCount.textContent = "00" : words.length < 10 ? wordCount.textContent = `0${words.length}` : wordCount.textContent = words.length
+
+    // method 2
+    // const matches = text.match(/\b[\w'-]+\b/g);
+    // matches ? wordCount.textContent = matches.length : wordCount.textContent = "00";
 }
 
 // count the sentences
 function renderSentencescount(text) {
-    const count = text.split('.').length
-    sentenceCount.textContent = count
+    const sentences = text.trim().split(/[.!?]+/).filter(sent => sent.trim().length > 0)
+    sentences.length === 0 ? sentenceCount.textContent = "00" : sentences.length < 10 ? sentenceCount.textContent = `0${sentences.length}` : sentenceCount.textContent = sentences.length
 }
 
 // get the array of the characters objects
