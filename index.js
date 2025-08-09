@@ -9,6 +9,7 @@ const lettersDesityDiv = document.getElementById('letters-density')
 const exculedSpace = document.getElementById('exclude-spaces')
 const characterLimit = document.getElementById('character-limit')
 const warnningEl = document.getElementById('warnning')
+const approxReadingTime = document.getElementById('approx-reading-time')
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', renderTheme)
@@ -26,6 +27,7 @@ userInput.addEventListener('input', function () {
         renderCharacterCount(userInput.value, exculedSpace.checked)
         renderWordCount(userInput.value)
         renderSentencescount(userInput.value)
+        calcApproxReadingTime(userInput.value)
     }, 200);
     const characters = getArrOfcharactersObjs(userInput.value)
     showLetterDensity(getLetterDesityHtml(characters))
@@ -165,4 +167,11 @@ function settingCharacterLimit() {
         userInput.removeAttribute('maxlength')
         warnningEl.classList.add('hidden')
     }
+}
+
+// count the approximate reading time of the text
+function calcApproxReadingTime(text) {
+    const numOfwords = text.trim().split(/\s+/).length
+    const readingTime = Math.round(numOfwords / 100)
+    userInput.value === '' ? approxReadingTime.textContent = 0 : readingTime !== 0 ? approxReadingTime.textContent = readingTime : approxReadingTime.textContent = "<0"
 }
